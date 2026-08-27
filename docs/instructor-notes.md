@@ -20,7 +20,18 @@ that Ripes does not.
 |---|---|
 | Lab 0 | Complete. Setup verification, no graded content. |
 | Labs 1–5 | Written, with TODOs. Ordering **not** final — see below. |
-| Tested on hardware | **Not yet.** See "Before this goes to students." |
+| Tested on hardware | **Yes, 2026-08-26.** Raspberry Pi 4, Debian 13 (trixie), aarch64. |
+
+Tested from a clean clone: `setup.sh` end to end and again a second time,
+`scripts/sanity_check.sh` standalone, all six labs built, ran and cleaned, a
+real GDB session that breakpoints and single-steps, and every TODO solved to
+confirm the checkpoint values in each README.
+
+**Caveat on the test machine.** It runs Debian 13 (trixie), not the Raspberry
+Pi OS image students have. The package split described below was found because
+of that difference, so testing on trixie was worth more than testing on a
+matching image would have been — but a student Pi should still be tested before
+release.
 
 Labs are deliberately independent. No lab refers to another by number, and
 nothing is shared between them except `common/`. Reorder them freely to match
@@ -83,9 +94,20 @@ who re-run `setup.sh`, and does not silently destroy anyone's work.
 If you change a lab after students have started it, tell them explicitly. Do
 not rely on the pull.
 
+## The QEMU package name differs by Debian release
+
+`qemu-system-riscv64` lives in **`qemu-system-misc`** on Bookworm and in
+**`qemu-system-riscv`** on Trixie. On Trixie, `qemu-system-misc` no longer
+contains the binary at all — it installs cleanly and leaves you with no
+emulator and no error message.
+
+`setup.sh` asks apt which package exists rather than assuming. If you ever see
+a student with the toolchain installed and `qemu-system-riscv64: not found`,
+this is why, and re-running `setup.sh` fixes it.
+
 ## Before this goes to students
 
-Nothing here has run on a Pi yet. In order:
+Done once on a Debian 13 Pi 4. Repeat on a real student image:
 
 1. `setup.sh` on a freshly imaged Pi 4 (2 GB), start to finish
 2. `setup.sh` again on the same Pi — it must be safe twice
@@ -97,6 +119,7 @@ Nothing here has run on a Pi yet. In order:
    Checkpoints section are correct
 
 Working under emulation on a laptop is not evidence any of this works on a Pi.
+Running it on a Pi found five defects that reading it did not.
 
 ## Why `lla` and not `la`
 
