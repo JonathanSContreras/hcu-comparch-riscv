@@ -15,7 +15,7 @@
     .equ FINISH_PASS, 0x5555
 
 _start:
-    la      sp, _stack_top          # the stack starts at the TOP of the
+    lla     sp, _stack_top          # the stack starts at the TOP of the
                                     # region link.ld reserved, and grows DOWN
 
 # ---------------------------------------------------------------- part 1
@@ -27,7 +27,7 @@ _start:
 #
 # Print sp, push a value, print sp again. The address gets SMALLER.
 
-    la      a0, msg_sp1
+    lla     a0, msg_sp1
     call    puts
     mv      a0, sp
     call    print_int
@@ -37,13 +37,13 @@ _start:
     li      t0, 12345
     sd      t0, 0(sp)               # store it there
 
-    la      a0, msg_sp2
+    lla     a0, msg_sp2
     call    puts
     mv      a0, sp
     call    print_int
     call    newline
 
-    la      a0, msg_popped
+    lla     a0, msg_popped
     call    puts
     ld      t0, 0(sp)               # read it back
     addi    sp, sp, 8               # release the space
@@ -67,7 +67,7 @@ _start:
 #
 # The last element is at:  address_of_data + (count - 1) * 8
 
-    la      a0, msg_rev
+    lla     a0, msg_rev
     call    puts
     # --- your code here ---
 
@@ -88,7 +88,7 @@ _start:
 # you are done, the next `call` will return to the wrong place -- and the
 # failure will look nothing like a stack problem.
 
-    la      a0, msg_stack
+    lla     a0, msg_stack
     call    puts
     # --- your code here ---
 
@@ -103,7 +103,7 @@ _start:
 # Deliberately break it afterwards: remove one `addi sp, sp, 8` and watch
 # what happens. Write down what you observe -- it is part of the deliverable.
 
-    la      a0, msg_check
+    lla     a0, msg_check
     call    puts
     # --- your code here ---
 

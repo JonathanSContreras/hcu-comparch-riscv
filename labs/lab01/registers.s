@@ -19,7 +19,7 @@
     .equ FINISH_PASS, 0x5555
 
 _start:
-    la      sp, _stack_top          # uart.s calls functions, so we need a
+    lla     sp, _stack_top          # uart.s calls functions, so we need a
                                     # stack. link.ld defines _stack_top.
 
 # ---------------------------------------------------------------- part 1
@@ -33,7 +33,7 @@ _start:
 # turns it into a real instruction (usually `addi x, zero, n`). RISC-V has
 # no "load a constant" instruction, because it does not need one.
 
-    la      a0, msg_sum
+    lla     a0, msg_sum
     call    puts
 
     li      t0, 17                  # t0 = 17
@@ -53,7 +53,7 @@ _start:
 # Useful:  sub  rd, rs1, rs2      rd = rs1 - rs2
 #          addi rd, rs1, imm      rd = rs1 + imm   (imm fits in 12 bits)
 
-    la      a0, msg_todo1
+    lla     a0, msg_todo1
     call    puts
     # --- your code here ---
 
@@ -73,7 +73,7 @@ _start:
 # Think about what shifting right by 4 does to a number in decimal terms
 # before you run it. You should be able to predict the output.
 
-    la      a0, msg_todo2
+    lla     a0, msg_todo2
     call    puts
     # --- your code here ---
 
@@ -95,7 +95,7 @@ _start:
 # Useful:  ld  rd, offset(rs)      load 8 bytes  (RV64 doubleword)
 #          sd  rs2, offset(rs1)    store 8 bytes
 
-    la      a0, msg_todo3
+    lla     a0, msg_todo3
     call    puts
     # --- your code here ---
 

@@ -21,7 +21,7 @@
     .extern add_two, sum_to, fact, largest, scale
 
 _start:
-    la      sp, _stack_top
+    lla     sp, _stack_top
 
 # ---------------------------------------------------------------- part 1
 # Worked example: call a C function from assembly.
@@ -30,7 +30,7 @@ _start:
 # anything special here -- this is the same `call` you have been using all
 # along, and the C compiler emitted a procedure that honours the same ABI.
 
-    la      a0, msg_add
+    lla     a0, msg_add
     call    puts
     li      a0, 30
     li      a1, 12
@@ -44,7 +44,7 @@ _start:
 # Call sum_to(100), fact(10), and scale(9) and print each result.
 # Expected: 5050, 3628800, 18
 
-    la      a0, msg_rest
+    lla     a0, msg_rest
     call    puts
     # --- your code here ---
 
@@ -59,7 +59,7 @@ _start:
 # `const long *values` is nothing more exotic than a register holding an
 # address -- exactly what you were doing by hand in the array labs.
 
-    la      a0, msg_largest
+    lla     a0, msg_largest
     call    puts
     # --- your code here ---
 

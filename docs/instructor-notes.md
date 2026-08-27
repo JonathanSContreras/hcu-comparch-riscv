@@ -98,6 +98,20 @@ Nothing here has run on a Pi yet. In order:
 
 Working under emulation on a laptop is not evidence any of this works on a Pi.
 
+## Why `lla` and not `la`
+
+The labs use `lla` throughout. With this toolchain `la` generates an
+`auipc` + `ld` pair that loads the address **through the global offset
+table** — a dynamic-linking mechanism with no business in a bare-metal
+program, and one that does not match anything in Patterson & Hennessy.
+`lla` generates `auipc` + `addi`, computing the address directly from the
+program counter, which is what the textbook describes and what students
+should see in `make dump`.
+
+If a student writes `la` out of habit their code still works. The
+disassembly just stops matching the README, which is worth a sentence in
+class rather than a correction.
+
 ## Known limits
 
 - **`print_int` and the most negative number.** `neg` has no valid result for

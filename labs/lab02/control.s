@@ -15,7 +15,7 @@
     .equ FINISH_PASS, 0x5555
 
 _start:
-    la      sp, _stack_top
+    lla     sp, _stack_top
 
 # ---------------------------------------------------------------- part 1
 # Worked example: count from 1 to 5.
@@ -28,7 +28,7 @@ _start:
 # `2f` means "forward to the nearest 2". They let you write loops without
 # inventing a unique name for every one.
 
-    la      a0, msg_count
+    lla     a0, msg_count
     call    puts
 
     li      s0, 1                   # s0 = counter (s registers survive calls)
@@ -57,7 +57,7 @@ _start:
 # `bgt` and `ble` also exist, as pseudo-instructions -- the assembler just
 # swaps the operands and uses blt/bge. Check that in `make dump`.
 
-    la      a0, msg_sum
+    lla     a0, msg_sum
     call    puts
     # --- your code here ---
 
@@ -77,7 +77,7 @@ _start:
 #     ld  t1, 0(t0)        t1 = element 0
 #     addi t0, t0, 8       t0 now points at element 1
 
-    la      a0, msg_max
+    lla     a0, msg_max
     call    puts
     # --- your code here ---
 
@@ -97,7 +97,7 @@ _start:
 #
 # Useful: putc takes an ASCII value in a0. 'e' is 101, 'o' is 111.
 
-    la      a0, msg_parity
+    lla     a0, msg_parity
     call    puts
     # --- your code here ---
 

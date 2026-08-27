@@ -46,7 +46,7 @@ fixes. Paste its output when asking for help.
 | `Error: illegal operands` on `addi` | Your immediate is bigger than 12 bits signed (−2048…2047). Use `li` into a register, then `add`. |
 | `undefined reference to puts` | The lab's Makefile needs `USE_UART = 1`. Lab 0 deliberately does not use it. |
 | `undefined reference to _stack_top` | You are not linking with `common/link.ld`. Build with `make`, not by calling `gcc` yourself. |
-| `relocation truncated to fit` | A `la` to something too far away, usually a missing `.section` directive putting data somewhere unexpected. |
+| `relocation truncated to fit` | An `lla` to something too far away, usually a missing `.section` directive putting data somewhere unexpected. |
 
 ## Running
 

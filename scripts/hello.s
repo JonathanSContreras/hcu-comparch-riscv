@@ -20,7 +20,7 @@
     .equ FINISH_PASS,  0x5555       # writing this word powers the machine off
 
 _start:
-    la      t0, msg                 # t0 = address of the first character
+    lla     t0, msg                 # t0 = address of the first character
     li      t1, UART_BASE           # t1 = the UART's data register
 
 print_loop:

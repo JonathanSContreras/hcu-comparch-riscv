@@ -84,7 +84,7 @@ Then at the `(gdb)` prompt:
     ld    t0, 0(t1)         load 8 bytes from the address in t1
     sd    t0, 0(t1)         store 8 bytes to the address in t1
     lbu   t0, 0(t1)         load 1 byte, zero-extended
-    la    t0, label         t0 = the ADDRESS of label
+    lla   t0, label         t0 = the ADDRESS of label  (auipc + addi)
 
     beq   t0, t1, L         branch if equal
     bne   t0, t1, L         branch if not equal

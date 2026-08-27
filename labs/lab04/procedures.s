@@ -27,7 +27,7 @@
 #   sp       stack pointer, 16-byte aligned at every call boundary
 
 _start:
-    la      sp, _stack_top
+    lla     sp, _stack_top
 
 # ---------------------------------------------------------------- part 1
 # Worked example: a leaf procedure.
@@ -35,7 +35,7 @@ _start:
 # `square` calls nothing, so it never needs the stack and never touches ra.
 # That is what makes it a "leaf". Compare its prologue to `fact` below.
 
-    la      a0, msg_square
+    lla     a0, msg_square
     call    puts
     li      a0, 12
     call    square                  # a0 = 12 -> returns 144 in a0
@@ -53,7 +53,7 @@ _start:
 #
 # Expected for n = 100: 5050
 
-    la      a0, msg_sumto
+    lla     a0, msg_sumto
     call    puts
     li      a0, 100
     call    sum_to
@@ -86,7 +86,7 @@ _start:
 # Try it with n = 25 afterwards and explain the result. It is not a bug in
 # your code.
 
-    la      a0, msg_fact
+    lla     a0, msg_fact
     call    puts
     li      a0, 10
     call    fact
@@ -103,7 +103,7 @@ _start:
 # then read `clobber` and confirm you were right. That difference is the
 # entire content of the calling convention.
 
-    la      a0, msg_clobber
+    lla     a0, msg_clobber
     call    puts
     # --- your code here ---
 

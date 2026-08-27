@@ -48,7 +48,7 @@ need more than one instruction, which is what `li` quietly does for you.
 - After TODO 2: the low byte of `0x00012345` is `0x45`, which is **69** in
   decimal, and shifting right by 4 gives **4660**. Predict both before running.
 - After TODO 3: `todo 3  value + 1000 via memory = 75565`.
-- In `make dump`: find your `la` instruction and confirm it became **two**
+- In `make dump`: find your `lla` instruction and confirm it became **two**
   instructions (`auipc` then `addi`). RISC-V has no single instruction that
   loads a 64-bit address.
 

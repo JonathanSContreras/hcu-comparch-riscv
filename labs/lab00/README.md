@@ -66,8 +66,9 @@ make dump
 This disassembles your program. A few things to notice, because they come
 back repeatedly later in the course:
 
-- `la t0, msg` was a **pseudo-instruction**. It is not a real RISC-V
-  instruction; the assembler turned it into two (`auipc` + `addi`).
+- `lla t0, msg` was a **pseudo-instruction**. It is not a real RISC-V
+  instruction; the assembler turned it into two (`auipc` + `addi`) that
+  compute the address relative to the program counter.
 - Registers print as `x5`, `x6`, `x7` rather than `t0`, `t1`, `t2`. Those are
   the same registers — `t0` is just a conventional name for `x5`.
 - Some instructions are only **2 bytes** long and start with `c.` (like
