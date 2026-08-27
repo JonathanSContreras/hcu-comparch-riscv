@@ -123,12 +123,17 @@ square:
     mul     a0, a0, a0
     ret
 
-# TODO 1: write sum_to here.
-# sum_to:
+# TODO 1 -- replace this stub with a real implementation.
+# It returns -1 so the program builds and runs before you have written it.
+# When your checkpoint says 5050 and you see -1, this is why.
+sum_to:
+    li      a0, -1
+    ret
 
-
-# TODO 2: write fact here.
-# fact:
+# TODO 2 -- replace this stub with a real implementation.
+fact:
+    li      a0, -1
+    ret
 
 
 # clobber: deliberately writes to a caller-saved and a callee-saved register,

@@ -99,7 +99,7 @@ all: $(ELF)
 
 # Assemble and link are kept as separate steps on purpose: it mirrors the
 # toolchain pipeline described in Patterson & Hennessy chapter 2.
-$(OBJ): $(PROG).s
+$(PROG).o: $(PROG).s
 	@echo "  AS      $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
