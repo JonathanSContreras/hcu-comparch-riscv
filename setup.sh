@@ -26,7 +26,7 @@ set -uo pipefail
 REPO_URL="${REPO_URL:-https://github.com/JonathanSContreras/hcu-comparch-riscv.git}"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/comparch}"
 REQUIRED_MB=1200          # toolchain + QEMU + headroom
-PACKAGES=(qemu-system-misc gcc-riscv64-linux-gnu gdb-multiarch make git)
+PACKAGES=(gcc-riscv64-linux-gnu gdb-multiarch make git)   # + a QEMU package, chosen below
 TOTAL_STEPS=6
 
 # ------------------------------------------------------------------ output
@@ -132,6 +132,25 @@ fi
 
 # =========================================================== 4. packages
 step "Installing packages"
+
+# Which package carries qemu-system-riscv64 depends on the Debian release.
+# Bookworm ships it inside qemu-system-misc. Trixie split the RISC-V system
+# emulators out into qemu-system-riscv, and on trixie qemu-system-misc does
+# NOT contain it -- installing that alone leaves you with no emulator and no
+# error. Ask apt which package actually exists rather than assuming.
+QEMU_PKG=""
+for cand in qemu-system-riscv qemu-system-misc; do
+    if apt-cache show "$cand" >/dev/null 2>&1; then QEMU_PKG="$cand"; break; fi
+done
+if [ -z "$QEMU_PKG" ]; then
+    die "Cannot find a QEMU package providing qemu-system-riscv64." \
+        "Looked for: qemu-system-riscv, qemu-system-misc" \
+        "" \
+        "Try 'sudo apt-get update' first. If neither exists on your system," \
+        "show this message to your TA."
+fi
+PACKAGES+=("$QEMU_PKG")
+info "QEMU package for this release: $QEMU_PKG"
 
 missing=()
 for pkg in "${PACKAGES[@]}"; do
