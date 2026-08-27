@@ -22,7 +22,7 @@ _start:
 # Worked example: where does the stack actually live?
 #
 # Nothing initialises sp for you. There is no operating system to do it. The
-# `la sp, _stack_top` above is the entire "stack setup" for this program, and
+# `lla sp, _stack_top` above is the entire "stack setup" for this program, and
 # _stack_top is a symbol the linker script defines.
 #
 # Print sp, push a value, print sp again. The address gets SMALLER.
