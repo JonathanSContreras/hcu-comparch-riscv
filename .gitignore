@@ -1,0 +1,13 @@
+# Build artifacts
+*.o
+*.elf
+*.bin
+*.dump
+
+# Written by setup.sh after it probes which toolchain is installed.
+# Machine-specific, so it stays out of version control.
+common/toolchain.env
+
+# Editor / OS noise
+*~
+.DS_Store
