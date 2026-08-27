@@ -55,9 +55,12 @@ Two rules that matter more than they look:
 - Part 1: the second `sp` value is exactly **8 less** than the first, and the
   value read back is `12345`.
 - TODO 1 prints `60 50 40 30 20 10`.
-- TODO 2 prints the same sequence — but running TODO 1 again afterwards would
-  now print the original order, because TODO 1 already reversed memory. Think
-  about why before you are surprised by it.
+- TODO 2 prints `10 20 30 40 50 60` — the **original** order, not the reversed
+  one. That is correct, and it is the most useful thing in this lab. TODO 1
+  reversed the array *in memory*, so TODO 2 reads an already-reversed array and
+  prints it in reverse, which puts it back. Reversing data and printing in
+  reverse order are different operations, and here they cancel out. Predict
+  this before you run it; if it surprises you, work out why until it does not.
 - TODO 3 prints `balanced`.
 - After you break it on purpose: it does **not** print `LEAKED` and stop
   politely. Note what it actually does.
