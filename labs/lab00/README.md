@@ -80,8 +80,8 @@ back repeatedly later in the course:
 make debug
 ```
 
-That prints connection instructions and waits. Open a **second SSH session**
-to the Pi, follow the printed steps to attach `gdb-multiarch`, then try
+That prints connection instructions and waits. Open a **second terminal window**
+on the Pi desktop, follow the printed steps to attach `gdb-multiarch`, then try
 `stepi` a few times and `info registers`. Quit QEMU with **Ctrl-A**, **X**.
 
 ## Troubleshooting

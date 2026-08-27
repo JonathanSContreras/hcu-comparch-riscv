@@ -73,7 +73,7 @@ if [ "$DEBUG" -eq 1 ]; then
 
   QEMU is paused at _start, waiting for a debugger on port ${PORT}.
 
-  Open a SECOND terminal on the Pi (another SSH session) and run:
+  Open a SECOND terminal window on the Pi desktop and run:
 
       cd $(pwd)
       gdb-multiarch ${ELF}

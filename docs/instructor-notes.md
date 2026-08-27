@@ -6,7 +6,7 @@ whatever you hand them.
 ## What this is
 
 A lab track for COSC 3341 that runs a RISC-V environment on the Raspberry Pi 4
-students already own from freshman year. Students SSH into the Pi from their
+students already own from freshman year. Students connect over VNC from their
 own laptop, write RV64 assembly, cross-compile it with GCC, run it under QEMU,
 and debug it with GDB.
 

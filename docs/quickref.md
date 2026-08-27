@@ -4,15 +4,15 @@ One page. Everything you need after Lab 0.
 
 ## Connect to your Pi
 
-```sh
-ssh pi@192.168.2.2
-```
+Open **TigerVNC Viewer**, connect to `192.168.2.2`, log in as `pi`. Accept the
+certificate warning — it is expected on a direct connection. Then open a
+terminal from the taskbar on the Pi desktop.
 
 **Turn off your VPN first.** It is the single most common reason this fails.
 Quit the VPN application entirely — disconnecting is not enough, and some
 clients restart themselves.
 
-If `ssh` times out, check the link before anything else:
+If VNC will not connect, check the link before anything else:
 
 ```sh
 ping 192.168.2.2
@@ -29,8 +29,8 @@ make clean      # delete build artifacts
 make help       # list every target
 ```
 
-**Quit QEMU with `Ctrl-A` then `X`.** Not `Ctrl-C`. If you close your SSH
-session with QEMU still running, it keeps running on the Pi.
+**Quit QEMU with `Ctrl-A` then `X`.** Not `Ctrl-C`. If you close the terminal
+window with QEMU still running, it keeps running on the Pi.
 
 ## Debug with GDB
 
@@ -40,7 +40,7 @@ Terminal 1:
 make debug      # QEMU starts paused, waiting for a debugger
 ```
 
-Terminal 2 — a second SSH session to the same Pi:
+Terminal 2 — a second terminal window on the same Pi desktop:
 
 ```sh
 cd ~/comparch/labs/lab01

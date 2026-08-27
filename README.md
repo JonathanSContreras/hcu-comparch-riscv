@@ -13,8 +13,13 @@ datapath and the pipeline. This shows you the toolchain.
 
 Connect to your Pi and run one command.
 
+Open **TigerVNC Viewer** on your laptop, connect to `192.168.2.2`, and log in
+as `pi`. That is the same connection you set up in your freshman Cyber Kit — if
+you need a reminder, the Cyber Kit Setup and Configuration Guide covers it.
+
+On the Pi desktop, open a terminal and run:
+
 ```sh
-ssh pi@192.168.2.2
 git clone https://github.com/JonathanSContreras/hcu-comparch-riscv.git ~/comparch
 cd ~/comparch && ./setup.sh
 ```
