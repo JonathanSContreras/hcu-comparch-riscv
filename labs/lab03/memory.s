@@ -43,13 +43,18 @@ _start:
     call    print_int
     call    newline
 
-    ld      t0, 0(sp)               # read it back
-    addi    sp, sp, 8               # release the space
     la      a0, msg_popped
     call    puts
+    ld      t0, 0(sp)               # read it back
+    addi    sp, sp, 8               # release the space
     mv      a0, t0
     call    print_int
     call    newline
+    # Note the ordering above. The `ld` deliberately comes AFTER `call puts`.
+    # t0 is caller-saved, so puts is entitled to destroy it -- and it does.
+    # Loading first and printing second would print whatever puts happened to
+    # leave behind. If that sounds like a detail, it is the same detail that
+    # ends up costing you an afternoon later in the course.
 
 # ---------------------------------------------------------------- part 2
 # TODO 1 -- reverse an array in place.
