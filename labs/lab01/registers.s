@@ -84,7 +84,7 @@ _start:
 #
 # `value` lives in memory, not in a register. To use it you must LOAD it.
 #
-#     la  t0, value       t0 = the ADDRESS of value
+#     lla t0, value       t0 = the ADDRESS of value
 #     ld  t1, 0(t0)       t1 = the 8 bytes AT that address
 #
 # Load `value`, add 1000 to it, store the result back into `result`, then

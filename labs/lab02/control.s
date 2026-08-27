@@ -73,7 +73,7 @@ _start:
 # each time, not 1. Getting this wrong is the single most common mistake in
 # this lab, and the symptom is a nonsense number rather than a crash.
 #
-#     la  t0, numbers      t0 = address of element 0
+#     lla t0, numbers      t0 = address of element 0
 #     ld  t1, 0(t0)        t1 = element 0
 #     addi t0, t0, 8       t0 now points at element 1
 
